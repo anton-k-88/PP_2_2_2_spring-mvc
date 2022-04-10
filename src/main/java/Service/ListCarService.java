@@ -25,21 +25,17 @@ public class ListCarService {
         } else {
             List<Car> result = new ArrayList<>();
             Random random = new Random();
-            List<Integer> usedNumbers = new ArrayList<>();
             Integer x;
             for (int i = 0; i < qty;) {
                 x = random.nextInt(list.size());
-                if (usedNumbers.contains(x)) {
+                if (result.contains(x)) {
                     continue;
                 } else {
                     result.add(list.get(x));
-                    usedNumbers.add(x);
                     i++;
                 }
             }
             return result;
         }
     }
-
-
 }
