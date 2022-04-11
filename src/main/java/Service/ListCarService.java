@@ -5,7 +5,6 @@ import model.CarColor;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class ListCarService {
     private List<Car> list;
@@ -20,22 +19,10 @@ public class ListCarService {
     }
 
     public List<Car> getCarsList(Integer qty) {
-        if (qty == null || qty > 5) {
+        if (qty == null || qty > 4) {
             return list;
         } else {
-            List<Car> result = new ArrayList<>();
-            Random random = new Random();
-            Integer x;
-            for (int i = 0; i < qty;) {
-                x = random.nextInt(list.size());
-                if (result.contains(x)) {
-                    continue;
-                } else {
-                    result.add(list.get(x));
-                    i++;
-                }
-            }
-            return result;
+            return list.stream().limit(qty).toList();
         }
     }
 }
